@@ -5,6 +5,7 @@
 */
 
 #include "HV507.h"
+#include "Arduino.h"
 
 HV507::HV507()
 {
@@ -41,9 +42,6 @@ void HV507::loadBitToRegister(bool dataBit)
 void HV507::loadArrayToRegister(bool dataArray[64])
 {
     digitalWrite(blankPin, LOW);
-
-    bool dataArray[64] = {0};
-
     digitalWrite(latchPin, LOW);    // latch to store data in S/R
 
     for(int n = 0; n <= 63; n++) {  // Send data from dataArray over serial per byte
