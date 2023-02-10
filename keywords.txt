@@ -1,0 +1,19 @@
+#######################################
+# Syntax Colouring Map for HV507
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+HV507   KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+loadBitToRegister   KEYWORD2
+loadArrayToRegister KEYWORD2
+loadRegisterToOutput    KEYWORD2
+allOutputsLow   KEYWORD2
+allOutputsHigh  KEYWORD2
