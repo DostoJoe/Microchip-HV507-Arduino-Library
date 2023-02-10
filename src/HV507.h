@@ -12,9 +12,9 @@
 class HV507
 {
     public:
-        HV507(int dataPin, int clockPin, int latchPin, int blankPin, int polarityPin, int directionPin);
+        HV507();
         void loadBitToRegister(bool dataBit);
-        void loadArrayToRegister(bool dataArray[65]);
+        void loadArrayToRegister(bool dataArray[64]);
         void loadRegisterToOutput();
         void allOutputsLow();
         void allOutputsHigh();
@@ -26,12 +26,12 @@ class HV507
         int polarity = 1;
         int direction = 0;
 
-        int dataPin;
-        int clockPin;
-        int latchPin;
-        int blankPin;
-        int polarityPin;
-        int directionPin;
+        int dataPin = 21;
+        int clockPin = 25;
+        int latchPin = 18;
+        int blankPin = 32;
+        int polarityPin = 19;
+        int directionPin = 33;
 };
 
 #endif

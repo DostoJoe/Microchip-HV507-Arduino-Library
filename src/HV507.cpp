@@ -6,7 +6,7 @@
 
 #include "HV507.h"
 
-HV507::HV507(const int dataPin, const int clockPin, const int latchPin, const int blankPin, const int polarityPin, const int directionPin)
+HV507::HV507()
 {
     pinMode(dataPin, OUTPUT);
     pinMode(clockPin, OUTPUT);
@@ -38,22 +38,19 @@ void HV507::loadBitToRegister(bool dataBit)
 }
 
 // move an array of bits into the HV507 Shift Register
-void HV507::loadArrayToRegister(bool dataArray[65])
+void HV507::loadArrayToRegister(bool dataArray[64])
 {
     digitalWrite(blankPin, LOW);
 
-    bool dataArray[65] = {0};
+    bool dataArray[64] = {0};
 
     digitalWrite(latchPin, LOW);    // latch to store data in S/R
-
-    Serial.println("electrode data stream to HV507");
 
     for(int n = 0; n <= 63; n++) {  // Send data from dataArray over serial per byte
         digitalWrite(clockPin, LOW); // Set clock pin low ready for a rising edge
 
         int data = dataArray[n];
         digitalWrite(dataPin, data);
-        Serial.print(data);
         
         digitalWrite(clockPin, HIGH); // Data is loaded into S/R on the rising edge
     }
