@@ -1,0 +1,13 @@
+{
+	"name": "Microchip HV507 Library",
+	"version": "0.0.1",
+	"keywords": "HV507, Microchip",
+	"description": "Arduino library for the Microchip HV507 low-voltage to high-voltage serial-to-parallel converter.",
+	"repository":
+	{
+		"type": "git",
+		"url": "https://github.com/DostoJoe/Microchip-HV507-Arduino-Library.git"
+	},
+	"frameworks": "arduino",
+	"platforms": "*"
+}
