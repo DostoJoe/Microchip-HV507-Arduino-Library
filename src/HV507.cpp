@@ -27,28 +27,23 @@ HV507::HV507()
 // move a single bit into the HV507 Shift Register
 void HV507::loadBitToRegister(bool dataBit)
 {
-    digitalWrite(blankPin, LOW);
-
     digitalWrite(latchPin, LOW);
-    digitalWrite(clockPin, LOW); // Set clock pin low ready for a rising edge
 
+    digitalWrite(clockPin, LOW);
+  
     digitalWrite(dataPin, dataBit);
-    Serial.print(dataBit);
-
-    digitalWrite(clockPin, HIGH); // Data is loaded into S/R on the rising edge
+    
+    digitalWrite(clockPin, HIGH); // Set clock pin low ready for a rising edge
 }
 
 // move an array of bits into the HV507 Shift Register
-void HV507::loadArrayToRegister(bool dataArray[64])
+void HV507::loadArrayToRegister(bool dataArray[])
 {
-    digitalWrite(blankPin, LOW);
-    digitalWrite(latchPin, LOW);    // latch to store data in S/R
-
-    for(int n = 0; n <= 63; n++) {  // Send data from dataArray over serial per byte
+    for(int n = 0; n <= 63; n++) // Send data from dataArray over serial per bit
+    {  
         digitalWrite(clockPin, LOW); // Set clock pin low ready for a rising edge
 
-        int data = dataArray[n];
-        digitalWrite(dataPin, data);
+        digitalWrite(dataPin, dataArray[n]);
         
         digitalWrite(clockPin, HIGH); // Data is loaded into S/R on the rising edge
     }
@@ -57,8 +52,12 @@ void HV507::loadArrayToRegister(bool dataArray[64])
 // load the values in the shift register to the high-voltage output
 void HV507::loadRegisterToOutput()
 {
+    digitalWrite(clockPin, LOW);
     digitalWrite(latchPin, HIGH); // Unlatch to move data from S/R to HV outputs
+    digitalWrite(clockPin, HIGH);
+    digitalWrite(clockPin, LOW);
     digitalWrite(latchPin, LOW);  // Relatch to store data in the S/R
+    digitalWrite(clockPin, HIGH);
 }
 
 void HV507::allOutputsLow()

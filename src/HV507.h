@@ -20,17 +20,17 @@ class HV507
         void allOutputsHigh();
 
         int data = 0;
-        int clock = 0;
+        int clock = 1;
         int latch = 0;
         int blank = 1;
         int polarity = 1;
         int direction = 0;
 
         int dataPin = 21;
-        int clockPin = 25;
-        int latchPin = 18;
-        int blankPin = 32;
-        int polarityPin = 19;
+        int clockPin = 32;
+        int latchPin = 25;
+        int blankPin = 19;
+        int polarityPin = 18;
         int directionPin = 33;
 };
 
