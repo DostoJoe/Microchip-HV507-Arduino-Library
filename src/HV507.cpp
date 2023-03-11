@@ -52,12 +52,8 @@ void HV507::loadArrayToRegister(bool dataArray[])
 // load the values in the shift register to the high-voltage output
 void HV507::loadRegisterToOutput()
 {
-    digitalWrite(clockPin, LOW);
     digitalWrite(latchPin, HIGH); // Unlatch to move data from S/R to HV outputs
-    digitalWrite(clockPin, HIGH);
-    digitalWrite(clockPin, LOW);
     digitalWrite(latchPin, LOW);  // Relatch to store data in the S/R
-    digitalWrite(clockPin, HIGH);
 }
 
 void HV507::allOutputsLow()
